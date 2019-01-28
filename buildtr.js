@@ -161,7 +161,7 @@ const buildTaskRouter = async newWorkspace => {
   return `Workspace "${workspace.friendlyName}" has been created with the following TaskQueues: ${supportQueue.friendlyName}, ${salesQueue.friendlyName}, ${marketingQueue.friendlyName} and ${managerQueue.friendlyName}! The following workers have been added to your Workspace: ${francisco.friendlyName}, ${frank.friendlyName}, and ${lisa.friendlyName}.`;
 };
 
-buildTaskRouter('New Workspace 1')
+buildTaskRouter(process.env.WORKSPACE_NAME)
   .then(response => {
     console.log(response);
   })

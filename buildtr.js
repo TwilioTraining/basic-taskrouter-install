@@ -4,9 +4,6 @@ const accountSid = process.env.ACCOUNT_SID;
 const authToken = process.env.AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
-// Build a TaskRouter instance and return it's SID
-// Get 2 activity SIDS
-
 const createWorkspace = async name => {
   try {
     const response = await client.taskrouter.workspaces.create({

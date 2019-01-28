@@ -2,7 +2,7 @@
 
 ## What is This?
 
-This is a Node.js script that will quickly build a Twilio TaskRouter Workspace with 4 TaskQueues, 3 Workers and 1 Workflow. Use this code if you would like to spin up a TaskRouter instance to practice with and understand and get to know the basics of TaskRouter. All of the code/instructions used to build this script can be found here: https://www.twilio.com/docs/taskrouter. 
+This is a Node.js script that will quickly build a Twilio TaskRouter Workspace with 4 TaskQueues, 3 Workers and 1 Workflow. Use this code if you would like to spin up a TaskRouter instance to practice with, understand and get to know the basics of TaskRouter. All of the code/instructions used to build this script can be found here: https://www.twilio.com/docs/taskrouter. 
 
 ## Instructions
 1. Make sure you have a Twilio account. If you don't have one you can get one here: https://www.twilio.com/try-twilio.

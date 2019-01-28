@@ -12,7 +12,7 @@ This is a Node.js script that will quickly build a Twilio TaskRouter Workspace w
 5. In terminal/commandline run `npm install`. This will install the necessary node modules you need for running this code.
 6. Once that has finished running create a `.env` file in the `basic-taskrouter-install` directory.
 7. Copy the values from the `.env.example` file into your `.env` file.
-8. Be sure to fill out the values in your `.env` file. You can find your ACCONT_SID and AUTH_TOKEN here: https://www.twilio.com/console. The values would look something like this:
+8. Be sure to fill out the values in your `.env` file. You can find your ACCONT_SID and AUTH_TOKEN here: https://www.twilio.com/console. The values in your `.env` file would look something like this:
 ```
 ACCOUNT_SID='AC#################################'
 AUTH_TOKEN='################################'

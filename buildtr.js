@@ -47,12 +47,13 @@ const createTaskQueue = async (workspace, name, skills, reserved, busy) => {
   }
 };
 
-const createWorker = async (workspace, name, skills) => {
+const createWorker = async (workspace, name, skills, language) => {
   try{
     const response = client.taskrouter.workspaces(workspace)
     .workers
     .create({attributes: JSON.stringify({
-      skills: skills
+      skills: skills,
+      language: language
     }), friendlyName: name});
     return response;
   }catch (e) {
@@ -145,9 +146,9 @@ const buildTaskRouter = async newWorkspace => {
     reserved,
     busy
   );
-  const francisco = await createWorker(workspace.sid, 'Francisco', ['support', 'sales', 'marketing']);
-  const lisa = await createWorker(workspace.sid,'Lisa', 'manager');
-  const frank = await createWorker(workspace.sid, 'Frank', ['sales', 'marketing'])
+  const francisco = await createWorker(workspace.sid, 'Francisco', ['support', 'sales', 'marketing'], ['en', 'es', 'fr']);
+  const lisa = await createWorker(workspace.sid,'Lisa', 'manager', 'en');
+  const frank = await createWorker(workspace.sid, 'Frank', ['sales', 'marketing'], ['en', 'es']);
   const workflow = await createWorkflow(
     workspace.sid,
     supportQueue.sid,

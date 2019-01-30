@@ -53,7 +53,7 @@ const createWorker = async (workspace, name, skills, language) => {
     .workers
     .create({attributes: JSON.stringify({
       skills: skills,
-      language: language
+      languages: language
     }), friendlyName: name});
     return response;
   }catch (e) {
@@ -74,7 +74,8 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
               expression: `department=='support'`,
               targets: [
                 {
-                  queue: support
+                  queue: support,
+                  expression: `task.selected_language IN worker.languages`
                 }
               ]
             },
@@ -83,7 +84,8 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
               expression: `department=='sales'`,
               targets: [
                 {
-                  queue: sales
+                  queue: sales,
+                  expression: `task.selected_language IN worker.languages`
                 }
               ]
             },
@@ -92,7 +94,8 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
               expression: `department=='marketing'`,
               targets: [
                 {
-                  queue: marketing
+                  queue: marketing,
+                  expression: `task.selected_language IN worker.languages`
                 }
               ]
             },

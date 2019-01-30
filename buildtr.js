@@ -49,12 +49,12 @@ const createTaskQueue = async (workspace, name, skills, reserved, busy) => {
 
 const createWorker = async (workspace, name, skills) => {
   try{
-    client.taskrouter.workspaces(workspace)
+    const response = client.taskrouter.workspaces(workspace)
     .workers
     .create({attributes: JSON.stringify({
       skills: skills
     }), friendlyName: name});
-
+    return response;
   }catch (e) {
     throw new Error(`The Worker ${name} was not created.`);
   }

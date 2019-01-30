@@ -53,7 +53,8 @@ const createWorker = async (workspace, name, skills, language) => {
     .workers
     .create({attributes: JSON.stringify({
       skills: skills,
-      languages: language
+      languages: language,
+      contact_uri: '+12345678910'
     }), friendlyName: name});
     return response;
   }catch (e) {

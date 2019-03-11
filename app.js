@@ -4,15 +4,21 @@ const _ = require('lodash');
 const buildtr = require('./buildtr');
 
 
-const nameOptions = {
+const nameOptio
+ns = {
+  name: 'name',
   describe: 'Name of your TaskRouter Workspace',
-  demand: true,
+  demandOption: true,
   alias: 'n'
 };
 
 const argv = yargs
   .command('create', 'Create a new TaskRouter sample Contact Center', {
     name: nameOptions
+  })
+  .option('name', {
+    alias:'n',
+    default: false
   })
   .help()
   .argv;

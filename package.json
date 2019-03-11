@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv-safe": "^6.1.0",
-    "twilio": "^3.29.1"
+    "twilio": "^3.29.1",
+    "yargs": "^13.2.2"
   }
 }

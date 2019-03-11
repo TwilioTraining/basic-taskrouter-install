@@ -18,7 +18,7 @@ ACCOUNT_SID='AC#################################'
 AUTH_TOKEN='################################'
 WORKSPACE_NAME='My new workspace'
 ```
-9. Once all your changes are saved, from your terminal/commandline run `node buildtr.js`.
+9. Once all your changes are saved, from your terminal/commandline run `node app create -n "name of your workspace"`.
 
 If you've filled in all of the information properly in your `.env` file you should get a message in your terminal that looks like this:
 ```

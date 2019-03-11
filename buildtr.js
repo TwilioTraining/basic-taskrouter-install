@@ -31,15 +31,15 @@ const getActivitySid = async (workspace, activity) => {
   }
 };
 
-const createTaskQueue = async (workspace, name, skills, reserved, busy) => {
+const createTaskQueue = async (workspace, name, skills, activity) => {
   try {
     const response = await client.taskrouter
       .workspaces(workspace)
       .taskQueues.create({
         targetWorkers: `skills HAS "${skills}"`,
         friendlyName: name,
-        reservationActivitySid: reserved,
-        assignmentActivitySid: busy
+        reservationActivitySid: activity,
+        assignmentActivitySid: activity
       });
     return response;
   } catch (e) {
@@ -120,35 +120,30 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
 
 const buildTaskRouter = async newWorkspace => {
   const workspace = await createWorkspace(newWorkspace);
-  const reserved = await getActivitySid(workspace.sid, 'Busy');
-  const busy = await getActivitySid(workspace.sid, 'Reserved');
+  const unavailable = await getActivitySid(workspace.sid, 'Unavailable');
   const supportQueue = await createTaskQueue(
     workspace.sid,
     'Support',
     'support',
-    reserved,
-    busy
+    unavailable
   );
   const salesQueue = await createTaskQueue(
     workspace.sid,
     'Sales',
     'sales',
-    reserved,
-    busy
+    unavailable
   );
   const marketingQueue = await createTaskQueue(
     workspace.sid,
     'Marketing',
     'marketing',
-    reserved,
-    busy
+    unavailable
   );
   const managerQueue = await createTaskQueue(
     workspace.sid,
     'Manager',
     'manager',
-    reserved,
-    busy
+    unavailable
   );
   const francisco = await createWorker(workspace.sid, 'Francisco', ['support', 'sales', 'marketing'], ['en', 'es', 'fr']);
   const lisa = await createWorker(workspace.sid,'Lisa', 'manager', 'en');
@@ -163,10 +158,9 @@ const buildTaskRouter = async newWorkspace => {
   return `Workspace "${workspace.friendlyName}" has been created with the following TaskQueues: ${supportQueue.friendlyName}, ${salesQueue.friendlyName}, ${marketingQueue.friendlyName} and ${managerQueue.friendlyName}! The following workers have been added to your Workspace: ${francisco.friendlyName}, ${frank.friendlyName}, and ${lisa.friendlyName}.`;
 };
 
-buildTaskRouter(process.env.WORKSPACE_NAME)
-  .then(response => {
-    console.log(response);
-  })
-  .catch(e => {
-    console.log(e.message);
-  });
+
+
+module.exports = {
+  buildTaskRouter
+};
+

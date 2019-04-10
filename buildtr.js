@@ -18,19 +18,22 @@ const createWorkspace = async name => {
   }
 };
 
-const getActivitySid = async (workspace, activity) => {
-  try {
-    const response = await client.taskrouter
-      .workspaces(workspace)
-      .activities.list();
-    const result = response.find(
-      activities => activities.friendlyName === activity
-    );
-    return result.sid;
-  } catch (e) {
-    throw new Error(`Could not retrieve activity ${activity}`);
-  }
-};
+// Commented out this function, but keeping code here in case
+// we want to use this at a later date.
+
+// const getActivitySid = async (workspace, activity) => {
+//   try {
+//     const response = await client.taskrouter
+//       .workspaces(workspace)
+//       .activities.list();
+//     const result = response.find(
+//       activities => activities.friendlyName === activity
+//     );
+//     return result.sid;
+//   } catch (e) {
+//     throw new Error(`Could not retrieve activity ${activity}`);
+//   }
+// };
 
 const createTaskQueue = async (workspace, name, skills) => {
   try {

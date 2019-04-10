@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^2.4.2",
     "dotenv-safe": "^6.1.0",
     "twilio": "^3.29.1",
     "yargs": "^13.2.2"

@@ -1,4 +1,5 @@
 require('dotenv-safe').config();
+const chalk = require('chalk');
 
 const accountSid = process.env.ACCOUNT_SID;
 const authToken = process.env.AUTH_TOKEN;
@@ -31,15 +32,13 @@ const getActivitySid = async (workspace, activity) => {
   }
 };
 
-const createTaskQueue = async (workspace, name, skills, activity) => {
+const createTaskQueue = async (workspace, name, skills) => {
   try {
     const response = await client.taskrouter
       .workspaces(workspace)
       .taskQueues.create({
         targetWorkers: `skills HAS "${skills}"`,
-        friendlyName: name,
-        reservationActivitySid: activity,
-        assignmentActivitySid: activity
+        friendlyName: name
       });
     return response;
   } catch (e) {
@@ -120,30 +119,25 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
 
 const buildTaskRouter = async newWorkspace => {
   const workspace = await createWorkspace(newWorkspace);
-  const unavailable = await getActivitySid(workspace.sid, 'Unavailable');
   const supportQueue = await createTaskQueue(
     workspace.sid,
     'Support',
-    'support',
-    unavailable
+    'support'
   );
   const salesQueue = await createTaskQueue(
     workspace.sid,
     'Sales',
-    'sales',
-    unavailable
+    'sales'
   );
   const marketingQueue = await createTaskQueue(
     workspace.sid,
     'Marketing',
-    'marketing',
-    unavailable
+    'marketing'
   );
   const managerQueue = await createTaskQueue(
     workspace.sid,
     'Manager',
-    'manager',
-    unavailable
+    'manager'
   );
   const francisco = await createWorker(workspace.sid, 'Francisco', ['support', 'sales', 'marketing'], ['en', 'es', 'fr']);
   const lisa = await createWorker(workspace.sid,'Lisa', 'manager', 'en');
@@ -155,7 +149,7 @@ const buildTaskRouter = async newWorkspace => {
     marketingQueue.sid,
     managerQueue.sid
   );
-  return `Workspace "${workspace.friendlyName}" has been created with the following TaskQueues: ${supportQueue.friendlyName}, ${salesQueue.friendlyName}, ${marketingQueue.friendlyName} and ${managerQueue.friendlyName}! The following workers have been added to your Workspace: ${francisco.friendlyName}, ${frank.friendlyName}, and ${lisa.friendlyName}.`;
+  return chalk `${chalk.bold('Workspace')} "{red ${workspace.friendlyName}}" has been created with the following ${chalk.bold('TaskQueues')}: {green ${supportQueue.friendlyName}}, {green ${salesQueue.friendlyName}}, {green ${marketingQueue.friendlyName}} and {green ${managerQueue.friendlyName}}! The following ${chalk.bold('Workers')} have been added to your Workspace: {blue ${francisco.friendlyName}}, {blue ${frank.friendlyName}}, and {blue ${lisa.friendlyName}}.`;
 };
 
 

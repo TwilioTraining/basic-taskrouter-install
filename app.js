@@ -4,8 +4,7 @@ const _ = require('lodash');
 const buildtr = require('./buildtr');
 
 
-const nameOptio
-ns = {
+const nameOptions = {
   name: 'name',
   describe: 'Name of your TaskRouter Workspace',
   demandOption: true,

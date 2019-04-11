@@ -21,11 +21,11 @@ WORKSPACE_NAME='My new workspace'
 9. Once all your changes are saved, from your terminal/commandline run `node app create -n "name of your workspace"`.
 
 If you've filled in all of the information properly in your `.env` file you should get a message in your terminal that looks like this:
-```
-Workspace "My new workspace" has been created with the following TaskQueues: 
-Support, Sales, Marketing and Manager! The following workers have been added 
-to your Workspace: Francisco, Frank, and Lisa.
-```
+
+> Workspace "My new workspace" has been created with the following TaskQueues: 
+> Support, Sales, Marketing and Manager! The following workers have been added 
+> to your Workspace: Francisco, Frank, and Lisa.
+
 
 You can then access your newly made TaskRouter Works space by visiting the Twilio Console here: https://www.twilio.com/console/taskrouter/dashboard.
 

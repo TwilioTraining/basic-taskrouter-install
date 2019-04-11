@@ -18,7 +18,7 @@ const createWorkspace = async name => {
   }
 };
 
-// Commented out this function, but keeping code here in case
+// Commented out getActivitySid function, but keeping code here in case
 // we want to use this at a later date.
 
 // const getActivitySid = async (workspace, activity) => {

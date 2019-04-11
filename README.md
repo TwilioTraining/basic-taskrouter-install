@@ -24,8 +24,7 @@ If you've filled in all of the information properly in your `.env` file you shou
 
 > Workspace "My New Workspace" has been created with the following TaskQueues: Support, Sales, Marketing and Manager! The following Workers have been added to your Workspace: Francisco, Frank, and Lisa.
 
-
-You can then access your newly made TaskRouter Works space by visiting the Twilio Console here: https://www.twilio.com/console/taskrouter/dashboard.
+You can then access your newly made TaskRouter Workspace by visiting the Twilio Console here: https://www.twilio.com/console/taskrouter/dashboard.
 
 ## Final Notes
 Please keep in mind that this is not production code. This code was written so it is easy to follow, provides you with an example of how to use async/await with the Twilio Node.js helper library, and so you can get an understanding of how to work with the basics of the Twilio TaskRouter API. You can always make additional configurations in the Twilio Console (I strongly encourage you to do this if you are trying to learn the ins and outs of TaskRouter), or by modifying this code.

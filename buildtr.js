@@ -120,6 +120,20 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
   }
 };
 
+const createTaskChannel = async (workspace, fname, uname) => {
+  try{
+    const response = client.taskrouter.workspaces(workspace)
+      .taskChannels
+      .create({
+        friendlyName: fname,
+        uniqueName: uname
+      });
+      return response;
+  }catch (e) {
+    throw new Error(`The Task Channel named ${name} was not created.`);
+  }
+};
+
 const buildTaskRouter = async newWorkspace => {
   const workspace = await createWorkspace(newWorkspace);
   const supportQueue = await createTaskQueue(
@@ -152,7 +166,9 @@ const buildTaskRouter = async newWorkspace => {
     marketingQueue.sid,
     managerQueue.sid
   );
-  return chalk `${chalk.bold('Workspace')} "{red ${workspace.friendlyName}}" has been created with the following ${chalk.bold('TaskQueues')}: {green ${supportQueue.friendlyName}}, {green ${salesQueue.friendlyName}}, {green ${marketingQueue.friendlyName}} and {green ${managerQueue.friendlyName}}! The following ${chalk.bold('Workers')} have been added to your Workspace: {blue ${francisco.friendlyName}}, {blue ${frank.friendlyName}}, and {blue ${lisa.friendlyName}}.`;
+  const emailChannel = await createTaskChannel(workspace.sid, 'EMail Channel', 'email-channel');
+  const twitterChannel = await createTaskChannel(workspace.sid, 'Twitter Channel', 'twitter-channel' );
+  return chalk `${chalk.bold('Workspace')} "{red ${workspace.friendlyName}}" has been created with the following ${chalk.bold('TaskQueues')}: {green ${supportQueue.friendlyName}}, {green ${salesQueue.friendlyName}}, {green ${marketingQueue.friendlyName}} and {green ${managerQueue.friendlyName}}! The following ${chalk.bold('Workers')} have been added to your Workspace: {blue ${francisco.friendlyName}}, {blue ${frank.friendlyName}}, and {blue ${lisa.friendlyName}}. Two custom ${chalk.bold('Task Channels')} were created: ${emailChannel.friendlyName} and ${twitterChannel.friendlyName}.`;
 };
 
 

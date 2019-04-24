@@ -5,6 +5,7 @@ const accountSid = process.env.ACCOUNT_SID;
 const authToken = process.env.AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
+// Creates a TR Workspace
 const createWorkspace = async name => {
   try {
     const response = await client.taskrouter.workspaces.create({
@@ -35,6 +36,7 @@ const createWorkspace = async name => {
 //   }
 // };
 
+// Creates a TR TaskQueue
 const createTaskQueue = async (workspace, name, skills) => {
   try {
     const response = await client.taskrouter
@@ -49,6 +51,7 @@ const createTaskQueue = async (workspace, name, skills) => {
   }
 };
 
+// Creates a TR Worker
 const createWorker = async (workspace, name, skills, language) => {
   try{
     const response = client.taskrouter.workspaces(workspace)
@@ -64,6 +67,7 @@ const createWorker = async (workspace, name, skills, language) => {
   }
 }
 
+// Creates a TR Workflow
 const createWorkflow = async (workspace, support, sales, marketing, manager) => {
   try {
     client.taskrouter.workspaces(workspace).workflows.create({
@@ -120,6 +124,7 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
   }
 };
 
+// Creates a TR custome Task Channel
 const createTaskChannel = async (workspace, fname, uname) => {
   try{
     const response = client.taskrouter.workspaces(workspace)
@@ -134,6 +139,7 @@ const createTaskChannel = async (workspace, fname, uname) => {
   }
 };
 
+// Builds the full TR environment
 const buildTaskRouter = async newWorkspace => {
   const workspace = await createWorkspace(newWorkspace);
   const supportQueue = await createTaskQueue(

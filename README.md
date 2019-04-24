@@ -2,7 +2,7 @@
 
 ## What is This?
 
-This is a Node.js script that will quickly build a Twilio TaskRouter Workspace with 4 TaskQueues, 3 Workers and 1 Workflow. Use this code if you would like to spin up a TaskRouter instance to practice with, understand and get to know the basics of TaskRouter. All of the code/instructions used to build this script can be found here: https://www.twilio.com/docs/taskrouter. 
+This is a Node.js script that will quickly build a Twilio TaskRouter Workspace with 4 TaskQueues, 3 Workers, 1 Workflow and 2 custom Task Channels. Use this code if you would like to spin up a TaskRouter instance to practice with, understand and get to know the basics of TaskRouter. All of the code/instructions used to build this script can be found here: https://www.twilio.com/docs/taskrouter. 
 
 ## Instructions
 1. Make sure you have a Twilio account. If you don't have one you can get one here: https://www.twilio.com/try-twilio.
@@ -22,7 +22,7 @@ WORKSPACE_NAME='My new workspace'
 
 If you've filled in all of the information properly in your `.env` file you should get a message in your terminal that looks like this:
 
-> Workspace "My New Workspace" has been created with the following TaskQueues: Support, Sales, Marketing and Manager! The following Workers have been added to your Workspace: Francisco, Frank, and Lisa.
+> Workspace "new TR with channels2" has been created with the following TaskQueues: Support, Sales, Marketing and Manager! The following Workers have been added to your Workspace: Francisco, Frank, and Lisa. Two custom Task Channels were created: EMail Channel and Twitter Channel.
 
 You can then access your newly made TaskRouter Workspace by visiting the Twilio Console here: https://www.twilio.com/console/taskrouter/dashboard.
 

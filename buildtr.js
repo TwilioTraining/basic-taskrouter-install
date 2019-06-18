@@ -78,7 +78,7 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
           filters: [
             {
               filter_friendly_name: "Support",
-              expression: `department=='support'`,
+              expression: `selected_product=='support'`,
               targets: [
                 {
                   queue: support,
@@ -88,7 +88,7 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
             },
             {
               filter_friendly_name: "Sales",
-              expression: `department=='sales'`,
+              expression: `selected_product=='sales'`,
               targets: [
                 {
                   queue: sales,
@@ -98,7 +98,7 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
             },
             {
               filter_friendly_name: "Marketing",
-              expression: `department=='marketing'`,
+              expression: `selected_product=='marketing'`,
               targets: [
                 {
                   queue: marketing,
@@ -108,7 +108,7 @@ const createWorkflow = async (workspace, support, sales, marketing, manager) => 
             },
             {
               filter_friendly_name: "Manager",
-              expression: `department=='manager'`,
+              expression: `selected_product=='manager'`,
               targets: [
                 {
                   queue: manager
